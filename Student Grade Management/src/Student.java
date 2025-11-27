@@ -7,13 +7,13 @@ public abstract class Student {
     private String status;
     private static int studentCounter = 1;
 
-    public Student(String name, int age, String email, String phone) {
-        this.studentId = "S" + String.format("%03d", studentCounter++);
+    public Student(String name, int age, String email, String phone, String status) {
+        this.studentId = "STU" + studentCounter++;
         this.name = name;
         this.age = age;
         this.email = email;
         this.phone = phone;
-        this.status = "Active";
+        this.status = status;
     }
 
     public String getStudentId() {
@@ -44,7 +44,7 @@ public abstract class Student {
         this.status = status;
     }
 
-    public abstract void displayStudentDetails(double currentAverage);
+    public abstract void displayStudentDetails();
 
     public abstract String getStudentType();
 
@@ -54,7 +54,8 @@ public abstract class Student {
         return gm.calculateOverallAverage(this.studentId);
     }
 
-    public boolean isPassing(double currentAverage) {
+    public boolean isPassing(double currentAverage) { // This compares the current average with the passing grade and
+                                                      // checks if the student meets the passing grade
         return currentAverage >= getPassingGrade();
     }
 }
