@@ -9,6 +9,11 @@ public class Grade implements Gradable {
     private String date;
 
     public Grade(String studentID, Subject subject, double grade){
+        // validate grade on creation; throw so callers (like App) can handle invalid input
+        if (!validateGrade(grade)) {
+            throw new IllegalArgumentException("Grade must be between 0 and 100.");
+        }
+
         this.gradeID = "GRD" + gradeCounter++;
         this.studentID = studentID;
         this.subject = subject;
